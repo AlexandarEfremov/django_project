@@ -22,3 +22,8 @@ class Fruit(models.Model):
         blank=True,
         null=True
     )
+    category = models.ForeignKey(
+        to='Fruit',
+        on_delete=models.CASCADE,
+        null=True
+    )

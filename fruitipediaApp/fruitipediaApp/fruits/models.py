@@ -4,6 +4,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(
+        max_length=100,
         unique=True,
     )
 
@@ -23,7 +24,7 @@ class Fruit(models.Model):
         null=True
     )
     category = models.ForeignKey(
-        to='Fruit',
+        to='Category',
         on_delete=models.CASCADE,
         null=True
     )

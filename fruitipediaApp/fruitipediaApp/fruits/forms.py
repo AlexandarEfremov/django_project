@@ -28,6 +28,12 @@ class BaseFruitForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].label = ''
 
+
 class AddFruitForm(BaseFruitForm):
     pass
+
+
+class EditFruitForm(BaseFruitForm):
+    pass
+
 

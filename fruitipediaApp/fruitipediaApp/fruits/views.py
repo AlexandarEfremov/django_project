@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
 
-from fruitipediaApp.fruits.forms import CategoryAddForm, AddFruitForm, EditFruitForm
+from fruitipediaApp.fruits.forms import CategoryAddForm, AddFruitForm, EditFruitForm, DeleteFruitForm
 from fruitipediaApp.fruits.models import Fruit
 
 
@@ -53,8 +53,11 @@ def details_view(request, pk):
     return render(request, 'fruits/details-fruit.html', context)
 
 
-def delete_view(request, pk):
-    return render(request, 'fruits/delete-fruit.html')
+class DeleteFruitView(DeleteView):
+    model = Fruit
+    form_class = DeleteFruitForm
+    template_name = 'fruits/delete-fruit.html'
+    success_url = reverse_lazy('dashboard')
 
 
 def create_category(request):

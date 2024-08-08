@@ -37,3 +37,8 @@ class EditFruitForm(BaseFruitForm):
     pass
 
 
+class DeleteFruitForm(BaseFruitForm):
+    pass
+
+
+

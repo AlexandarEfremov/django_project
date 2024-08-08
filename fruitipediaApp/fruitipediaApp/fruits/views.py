@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-from fruitipediaApp.fruits.forms import CategoryAddForm
+from fruitipediaApp.fruits.forms import CategoryAddForm, AddFruitForm
 from fruitipediaApp.fruits.models import Fruit
 
 
@@ -17,8 +19,11 @@ def dashboard(request):
     return render(request, 'common/dashboard.html', context)
 
 
-def create_view(request):
-    return render(request, 'fruits/create-fruit.html')
+class CreateFruitView(CreateView):
+    model = Fruit
+    form_class = AddFruitForm
+    template_name = 'fruits/create-fruit.html'
+    success_url = reverse_lazy('dashboard')
 
 
 def edit_view(request, pk):

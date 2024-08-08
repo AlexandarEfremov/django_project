@@ -27,3 +27,7 @@ class BaseFruitForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].label = ''
+
+class AddFruitForm(BaseFruitForm):
+    pass
+

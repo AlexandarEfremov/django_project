@@ -1,6 +1,6 @@
 from django import forms
 
-from fruitipediaApp.fruits.models import Category
+from fruitipediaApp.fruits.models import Category, Fruit
 
 
 class CategoryForm(forms.ModelForm):
@@ -16,3 +16,14 @@ class CategoryForm(forms.ModelForm):
 
 class CategoryAddForm(CategoryForm):
     pass
+
+
+class BaseFruitForm(forms.ModelForm):
+    class Meta:
+        model = Fruit
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].label = ''
